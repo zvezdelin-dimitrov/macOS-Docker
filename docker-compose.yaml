@@ -1,0 +1,21 @@
+name: macos
+services:
+  osx:
+    image: dockurr/macos
+    container_name: macos
+    network_mode: "bridge"
+    environment:
+      VERSION: "15"
+      RAM_SIZE: "20G"
+      CPU_CORES: "10"
+      DISK_SIZE: "50G"
+    devices:
+      - /dev/kvm
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 8006:8006
+      - 22:22
+    stop_grace_period: 2m
+    volumes:
+      - ./macos_storage:/storage
